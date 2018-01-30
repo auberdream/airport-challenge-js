@@ -7,9 +7,17 @@ Airport.prototype.hangar = function() {
 };
 
 Airport.prototype.land = function(plane) {
-  this._planes.push(plane)
+  if (plane.isFlying()) {
+    plane.land();
+    console.log('plane has landed');
+    this._planes.push(plane);
+    }
+  else {
+    console.log('plane is already in the airport')
+  }
 };
 
 Airport.prototype.takeOff = function(plane) {
+
   this._planes.splice(this._planes.indexOf(plane), 1);
 }
